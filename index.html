@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST - Safety meets Technology</title>
+    <link href="./style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./images/favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="./images/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="./images/apple-touch-icon.png" sizes="180x180">
+    <link rel="alternate" hreflang="KR" href="indexKR.html" />
+    <link rel="alternate" hreflang="en" href="index.html" />
+    <link rel="alternate" hreflang="x-default" href="index.html" />
+    <style>
+        /* General styling for the product specifics page */
+        #product-specifics-page .product-specifics-content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column for mobile */
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 768px) {
+            #product-specifics-page .product-specifics-content-wrapper {
+                grid-template-columns: 2fr 3fr; /* Two columns for larger screens: image | text */
+            }
+
+            #specifics-main-image {
+                margin-top: 50px; /* Align image better with title on larger screens */
+            }
+        }
+
+        #product-specifics-page .product-main-image {
+            width: 100%;
+            max-width: 500px; /* Limit image size */
+            height: auto;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            object-fit: cover; /* Or 'contain' depending on images */
+            margin-bottom: 15px; /* Added margin for spacing before thumbnails */
+        }
+
+        /* Tab styling */
+        .tabs-nav .tab-link {
+            padding: 10px 15px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 1em;
+            color: #777;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px; /* Overlap with container border */
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        .tabs-nav .tab-link.active-tab {
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+            padding-top: 20px; /* Increased padding */
+            margin-top: -1px; /* Ensure it aligns well if tabs-nav has a bottom border */
+        }
+
+        .tab-content.active-tab-content {
+            display: block;
+        }
+
+        .product-category-style {
+            color: #ffffff;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5em;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .styled-table th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        .styled-list {
+            list-style: disc;
+            padding-left: 25px;
+            margin-bottom: 1.5em;
+        }
+
+        .styled-list li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body class="is-home"> <div id="page-transition-overlay">
+        <h1 id="overlay-title"></h1>
+    </div>
+
+    <header id="main-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="#home" class="nav-page-link logo-link">
+                        <img src="./images/GST MAIN LOGO.png" alt="GST Logo">
+                    </a>
+                </div>
+                <nav id="desktop-nav">
+                    <div class="nav-item"><span class="nav-link" data-target-menu="products-menu">PRODUCTS</span></div>
+                    <div class="nav-item"><span class="nav-link" data-target-menu="services-menu">SERVICES &amp; SUPPORT</span></div>
+                    <div class="nav-item"><span class="nav-link" data-target-menu="brands-menu">BRANDS</span></div>
+                    <div class="nav-item"><span class="nav-link" data-target-menu="company-menu">COMPANY</span></div>
+                </nav>
+                <div class="header-actions">
+                    <button id="search-icon-button" aria-label="Toggle search bar" aria-controls="search-bar"
+                        aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="icon-search">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                    </button>
+                
+                    <div class="lang-switcher">
+                        <a href="indexKR.html" class="lang-link">KR</a>
+                        <span class="lang-separator">/</span>
+                        <a href="index.html" class="lang-link lang-active">EN</a>
+                    </div>
+                </div>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <button id="mobile-menu-button" aria-label="Open main menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <span class="sr-only">Open main menu</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-menu"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mega-menu-wrapper">
+            <div id="products-menu" class="mega-menu">
+                <div class="container">
+                    <div class="mega-menu-content">
+                        <h4>Categories:</h4>
+                        <a href="#products" class="nav-page-link">All Products</a>
+                        <a href="#products" data-filter-category="Safety Systems" class="nav-page-link product-filter-link">Safety Valves</a>
+                        <a href="#products" data-filter-category="Flow Control" class="nav-page-link product-filter-link">Control Valves</a>
+                        <a href="#products" data-filter-category="Specialty Valves" class="nav-page-link product-filter-link">Specialty Valves</a>
+                        <a href="#products" data-filter-category="Instrumentation" class="nav-page-link product-filter-link">Instrumentation</a>
+                    </div>
+                </div>
+            </div>
+            <div id="services-menu" class="mega-menu">
+                <div class="container">
+                    <div class="mega-menu-content">
+                        <h4>Support:</h4>
+                        <a href="#services" data-scroll-target="repair" class="nav-page-link">Repair</a>
+                        <a href="#services" data-scroll-target="training-request" class="nav-page-link">Training Request</a>
+                        <a href="#services" data-scroll-target="live-support" class="nav-page-link">Live Support</a>
+                    </div>
+                </div>
+            </div>
+            <div id="brands-menu" class="mega-menu">
+                <div class="container">
+                    <div class="mega-menu-content">
+                        <h4>Partners:</h4>
+                        <a href="https://www.emerson.com/en-us" target="_blank" rel="noopener noreferrer">Emerson</a>
+                        <a href="https://fike.com/" target="_blank" rel="noopener noreferrer">Fike</a>
+                    </div>
+                </div>
+            </div>
+            <div id="company-menu" class="mega-menu">
+                <div class="container">
+                    <div class="mega-menu-content">
+                        <h4>About GST:</h4>
+                        <a href="#company" data-scroll-target="about" class="nav-page-link">About Us</a>
+                        <a href="#history" class="nav-page-link">History</a> <a href="#company" data-scroll-target="certification" class="nav-page-link">Certification</a>
+                        <a href="#company" data-scroll-target="management" class="nav-page-link">Management</a>
+                        <a href="#company" data-scroll-target="partnerships" class="nav-page-link">Partnerships</a> <a href="#company" data-scroll-target="performance" class="nav-page-link">Performance</a>
+                        <a href="#company" data-scroll-target="contact" class="nav-page-link">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="search-bar" class="search-bar">
+            <div class="container">
+                <form id="search-form" class="search-form-inner">
+                    <input type="search" id="search-input" placeholder="Search products or 'history'">
+                    <button type="submit" class="button button-primary">Search</button>
+                </form>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu-container hidden">
+            <div class="mobile-menu-content">
+                <a href="#products" class="nav-page-link mobile-nav-link">PRODUCTS</a>
+                <a href="#services" class="nav-page-link mobile-nav-link">SERVICES &amp; SUPPORT</a>
+                <a href="#brands" class="nav-page-link mobile-nav-link">BRANDS</a>
+                <a href="#company" class="nav-page-link mobile-nav-link">COMPANY</a>
+                <div class="mobile-menu-footer">
+                    <button class="mobile-search-button" aria-label="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-search"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
+                    </button>
+                    <a href="indexKR.html" class="lang-link">KR</a> <a href="index.html" class="lang-link lang-active">EN</a> </div>
+            </div>
+        </div>
+    </header>
+
+    <main> <section id="hero-section" class="page-section hero-section">
+            <div class="hero-video-container">
+                <video id="hero-video" poster="https://placehold.co/1920x1080/001f3f/ffffff?text=Loading+Video" playsinline autoplay muted loop>
+                    <source src="gst buisness.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1 class="hero-title"> Safety meets Technology </h1>
+                <p class="hero-subtitle"> 25+ years collaborating with precision engineering expertise to secure critical resources &amp; infrastructure. </p>
+                <a href="#products" class="nav-page-link button button-primary button-lg">Inquire now</a>
+            </div>
+        </section>
+
+        <section id="company-page" class="page-section">
+            <div class="container section-header-spacing"> <h1 class="section-title">Our Company</h1>
+            </div>
+
+            <div id="about" class="sub-section section-padding bg-light">
+                <div class="container">
+                    <h2 class="subsection-title">About Geumgang S&amp;T</h2>
+                    <div class="about-container">
+                        <div class="about-grid">
+                            <div class="about-panel about-panel-left">
+                                <h2> Accessing Innovative Technology </h2>
+                                <p> Geumgang S&amp;T provides exclusive access to cutting-edge Korean science and technology through a curated portfolio of critical flow control and safety solutions, ensuring reliability for your most demanding industrial applications. </p>
+                            </div>
+                            <div class="about-panel about-panel-right">
+                                <video id="about-gst-video" poster="https://placehold.co/1920x1080/001f3f/ffffff?text=Loading+Video" playsinline autoplay muted loop>
+                                    <source src="innovation.mp4" type="video/mp4"> Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                        <div class="about-text-overlap">
+                            <h3>Our Expertise</h3>
+                            <p>Leveraging decades of experience to deliver unparalleled engineering solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section id="management" class="sub-section section-padding">
+                <div class="container">
+                    <div class="section-intro text-center">
+                        <h2 class="subsection-title">Management Approach</h2>
+                        <p>Our management approach is centered around strong partnerships and a strategic project pursuit process to ensure customer satisfaction and successful outcomes.</p>
+                    </div>
+                    <div class="management-grid">
+                        <div class="management-diagram">
+                            <h3 class="diagram-title">Customer Relationship Model</h3>
+                            <div class="diagram-content">
+                                <div id="relationshipModelContainer" class="relationship-model">
+                                    <svg id="diagramLinesSvg" class="diagram-lines-svg" preserveAspectRatio="xMidYMid meet"></svg>
+                                    <div id="centerGstCircle" class="diagram-circle center-circle"><span>GST</span> Geumgang S&amp;T</div>
+                                    <div id="dangjinSatelliteCircle" class="diagram-circle satellite-circle dangjin">GST<br>DANGJIN</div>
+                                    <div id="emersonKoreaSatelliteCircle" class="diagram-circle satellite-circle emerson-korea">EMERSON<br>KOREA</div>
+                                    <div id="fikeSatelliteCircle" class="diagram-circle satellite-circle fike">FIKE</div>
+                                    <div id="emersonSgSatelliteCircle" class="diagram-circle satellite-circle emerson-sg">EMERSON<br>SG</div>
+                                    <div id="yeosuSatelliteCircle" class="diagram-circle satellite-circle sub-satellite yeosu">GST<br>YEOSU</div>
+                                    <div id="ulsanSatelliteCircle" class="diagram-circle satellite-circle sub-satellite ulsan">GST<br>ULSAN</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="management-diagram">
+                            <h3 class="diagram-title">Project Pursuit Strategy</h3>
+                            <div class="diagram-content">
+                                <div id="pursuitModelContainer" class="pursuit-model">
+                                    <svg id="pursuitDiagramLinesSvg" class="diagram-lines-svg" preserveAspectRatio="xMidYMid meet"></svg>
+                                    <div id="pursuitGstBox" class="flowchart-box">GST</div>
+                                    <div id="pursuitPpBox" class="flowchart-box">Project Pursuit</div>
+                                    <div class="bottom-row">
+                                        <div id="pursuitEpcBox" class="flowchart-box bottom-item">EPC</div>
+                                        <div id="pursuitOemBox" class="flowchart-box bottom-item">OEM</div>
+                                        <div id="pursuitMroBox" class="flowchart-box bottom-item">MRO</div>
+                                        <div id="pursuitServiceBox" class="flowchart-box bottom-item">SERVICE</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="partnerships" class="sub-section section-padding">
+                <div class="container">
+                    <h2 class="subsection-title">Our Valued Partnerships</h2>
+                    <p class="section-intro">
+                        We are proud to collaborate with industry-leading manufacturers, enabling us to provide a comprehensive range of high-quality solutions and expertise to our clients. These longstanding relationships are a testament to our commitment to excellence and reliability.
+                    </p>
+                    <div class="partnerships-grid">
+                        <div class="partnership-card">
+                            <img src="agc.png" alt="Anderson Greenwood Logo" class="partnership-logo">
+                            <h3 class="partnership-name">Anderson Greenwood</h3>
+                            <p class="partnership-since">(Since 1992)</p>
+                            <p class="partnership-description">A premier provider of pressure relief and tank protection solutions, ensuring safety and efficiency in critical processes.</p>
+                        </div>
+                        <div class="partnership-card">
+                            <img src="varec.png" alt="Varec, a Leidos company" class="varec-logo-custom-size">
+                            <h3 class="partnership-name">Varec</h3>
+                            <p class="partnership-since">(Since 2000)</p>
+                            <p class="partnership-description">Specialists in advanced tank gauging, control systems, and comprehensive inventory management solutions for bulk liquids.</p>
+                        </div>
+                        <div class="partnership-card">
+                             <img src="fike.jpeg" alt="Fike Corporation Logo" class="partnership-logo">
+                            <h3 class="partnership-name">Fike Corporation</h3>
+                            <p class="partnership-since">(Since 2002)</p>
+                            <p class="partnership-description">A globally recognized leader in providing reliable rupture disc technologies and innovative explosion protection systems.</p>
+                        </div>
+     
+            </section>
+            <section id="performance" class="sub-section section-padding bg-light">
+                <div class="container">
+                    <h2 class="subsection-title">Performance Overview '23</h2>
+                    <p class="section-intro">A look at our key achievements and operational highlights from the past year.</p>
+                    <div class="performance-grid">
+                        <div class="performance-stat"><div class="stat-number" data-target="13">0</div><div class="stat-label">Projects Successfully Delivered</div></div>
+                        <div class="performance-stat"><div class="stat-number" data-target="15">0</div><div class="stat-label">Unique Customers Engaged</div></div>
+                        <div class="performance-stat"><div class="stat-number" data-target="95">0</div><div class="stat-label">Client Satisfaction Rate (%)</div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="certification" class="sub-section section-padding">
+                <div class="container">
+                    <h2 class="subsection-title">Certifications &amp; Downloads</h2>
+                    <div class="certification-downloads-grid">
+                        <div class="cert-group">
+                            <h3 class="cert-title">EMERSON</h3>
+                            <div class="download-links-list">
+                                <p><a href="./documents/emerson-A1120127-TAP00000YV-revision3.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>TYPE Certificate</a></p>
+                                <p><a href="./documents/placeholder_emerson_asme.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>ASME Certificate</a></p>
+                                <p><a href="./documents/ASME SEC 8.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>ASME UV Certificate (Shanghai)</a></p>
+                                <p><a href="./documents/ISO.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>ISO 9001:2015 (Shanghai)</a></p>
+                                <p><a href="./documents/KGS.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>KGS Certificate (ASME Sec. VIII)</a></p>
+                                <p><a href="./documents/NB CERT.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>National Board NB Mark (Shanghai)</a></p>
+                                <p><a href="./documents/TYPE CERT.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>DNV Type Approval (JOS-E, JBS-E series)</a></p>
+                            </div>
+                        </div>
+                        <div class="cert-group">
+                            <h3 class="cert-title">FIKE</h3>
+                            <div class="download-links-list">
+                                <p><a href="./documents/placeholder_fike_fm_exq.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>FM/EXQ</a></p>
+                                <p><a href="./documents/ASME UD (2).pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>ASME UD Certificate</a></p>
+                                <p><a href="./documents/ASME UD.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>National Board NB Mark (UD, UD3)</a></p>
+                                <p><a href="./documents/EAC Cert.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>EAC Certificate (TR CU 032/2013)</a></p>
+                                <p><a href="./documents/ISO CERT HQ.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>ISO 9001:2015 (HQ)</a></p>
+                                <p><a href="./documents/PED CERT 2022.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>PED Certificate (CE 0036)</a></p>
+                            </div>
+                        </div>
+                        <div class="cert-group">
+                            <h3 class="cert-title">GST</h3>
+                            <div class="download-links-list">
+                                <p><a href="./documents/GST_ISO_EN_Y23.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>ISO EN Certification</a></p> <p><a href="./documents/GST_ISO_KR_Y23.pdf" download class="download-link"><span class="icon-placeholder download-icon"></span>ISO KR Certification</a></p> <p><a href="./documents/GST_Service_Provider.pptx" download class="download-link"><span class="icon-placeholder download-icon"></span>Select Service Provider</a></p> </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="sub-section section-padding bg-pattern">
+                <div class="container">
+                    <h2 class="subsection-title">Contact Us</h2>
+                    <p class="section-intro">Get in touch with our team. We're here to help with your inquiries.</p>
+                    <div class="contact-grid">
+                        <div class="contact-info">
+                            <h3>Our Locations</h3>
+                            <div class="location"><h4><span class="icon-placeholder"></span> Headquarters (Seoul)</h4><p> 37, Wangsan-ro 19-gil, Dongdaemun-gu, Seoul, Korea</p><p><span class="icon-placeholder"></span> <a href="tel:+8227845915">+82 2 784 5915</a></p><p><span class="icon-placeholder"></span> <a href="mailto:jykim@ggsnt.com">James Kim Sr. Sales Engineer</a></p></div>
+                            <div class="location"><h4><span class="icon-placeholder"></span> Service Center (Dangjin)</h4><p>3 Gokchon-gil, Songak-eup, Dangjin, Chungcheongnam-do</p><p><span class="icon-placeholder"></span> <a href="tel:+82413625917">+82 41 362 5917</a></p><p><span class="icon-placeholder"></span> <a href="mailto:hbkim@ggsnt.com">Terry Kim Sr. Technician</a></p></div> 
+                            <div class="location"><h4><span class="icon-placeholder"></span> Ulsan Office</h4><p>20 Sangnam-gil, Cheongnyang-eup, Ulju-gun, Ulsan</p><p><span class="icon-placeholder"></span> <a href="tel:+82522375915">+82 52 237 5915</a></p></div>
+                            <div class="location"><h4><span class="icon-placeholder"></span> Yeosu Office</h4><p>Sicheongseo 4-gil, Yeosu, Jeollanam-do </p><p><span class="icon-placeholder"></span> <a href="tel:+82616925915">+82 61 692 5915</a></p></div>
+                        </div>
+                        <div class="contact-form-container">
+                            <h3>Send us a Message</h3>
+                            <form id="contact-form">
+                                <div class="form-group"><label for="contact-name">Name</label><input type="text" id="contact-name" name="name" required></div>
+                                <div class="form-group"><label for="contact-email">Email</label><input type="email" id="contact-email" name="email" required></div>
+                                <div class="form-group"><label for="contact-subject">Subject</label><input type="text" id="contact-subject" name="subject" required></div>
+                                <div class="form-group"><label for="contact-message">Message</label><textarea id="contact-message" name="message" rows="5" required></textarea></div>
+                                <div class="form-actions"><button type="submit" class="button button-primary">Send Message</button></div>
+                            </form>
+                            <div id="contact-confirmation" class="form-confirmation hidden">Thank you for your message! We'll be in touch soon.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section> <section id="products-page" class="page-section">
+            <div class="container section-header-spacing">
+                 <h1 class="section-title">Our Products</h1>
+            </div>
+            <div id="products-section" class="sub-section section-padding">
+                <div class="container">
+                    <p class="section-intro">Explore our range of high-performance flow control and safety solutions engineered for reliability.</p>
+                    <div class="product-filter-bar">
+                        <input type="text" id="product-search-input" placeholder="Search product name">
+                        <select id="product-category-filter">
+                            <option value="">All Categories</option>
+                            <option value="Safety Systems">Safety Systems</option>
+                            <option value="Flow Control">Flow Control</option>
+                            <option value="Process Control">Process Control</option>
+                            <option value="Instrumentation">Instrumentation</option>
+                            <option value="Specialty Valves">Specialty Valves</option>
+                        </select>
+                        <button id="clear-product-filters" class="button button-secondary button-sm">Clear Filters</button>
+                    </div>
+                    <div class="product-grid">
+                        <div class="product-card" data-category="Safety Systems" data-name="Pressure Relief / Safety Valve">
+                            <img src="./images/5200.png" alt="Anderson Greenwood Series 5200 Valve" class="product-image">
+                            <div class="product-info">
+                                <h3 class="product-title">Pressure Relief / Safety Valve</h3>
+                                <p class="product-category">Safety Systems</p>
+                                <p class="product-description">Reliable overpressure protection for various industrial applications.</p>
+                                <a href="#product-specifics" data-product-key="Pressure Relief / Safety Valve" class="product-link nav-page-link">Learn More &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="product-card" data-category="Flow Control" data-name="Cryogenic Regulator">
+                            <img src="./images/cryo valve.png" alt="Cryogenic Regulator" class="product-image">
+                            <div class="product-info">
+                                <h3 class="product-title">Cryogenic Regulator</h3>
+                                <p class="product-category">Flow Control</p>
+                                <p class="product-description">Precision control for low-temperature fluid applications.</p>
+                                <a href="#product-specifics" data-product-key="Cryogenic Regulator" class="product-link nav-page-link">Learn More &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="product-card" data-category="Process Control" data-name="Steam Products">
+                            <img src="./images/steam trap.png" alt="Steam Product" class="product-image">
+                            <div class="product-info">
+                                <h3 class="product-title">Steam Products</h3>
+                                <p class="product-category">Process Control</p>
+                                <p class="product-description">Efficient and durable components for steam system management.</p>
+                                <a href="#product-specifics" data-product-key="Steam Products" class="product-link nav-page-link">Learn More &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="product-card" data-category="Instrumentation" data-name="Instrument Valve">
+                            <img src="./images/instrument.png" alt="Instrument Valve" class="product-image">
+                            <div class="product-info">
+                                <h3 class="product-title">Instrument Valve</h3>
+                                <p class="product-category">Instrumentation</p>
+                                <p class="product-description">High-integrity valves for process measurement and control lines.</p>
+                                <a href="#product-specifics" data-product-key="Instrument Valve" class="product-link nav-page-link">Learn More &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="product-card" data-category="Flow Control" data-name="Isolation Valve">
+                            <img src="./images/isovalve.png" alt="Isolation Valve" class="product-image">
+                            <div class="product-info">
+                                <h3 class="product-title">Isolation Valve</h3>
+                                <p class="product-category">Flow Control</p>
+                                <p class="product-description">Dependable shut-off valves for maintenance and safety isolation.</p>
+                                <a href="#product-specifics" data-product-key="Isolation Valve" class="product-link nav-page-link">Learn More &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="product-card" data-category="Safety Systems" data-name="Rupture Disc / Extruder">
+                            <img src="./images/Rupture.png" alt="Rupture Disc/Extruder" class="product-image">
+                            <div class="product-info">
+                                <h3 class="product-title">Rupture Disc / Extruder</h3>
+                                <p class="product-category">Safety Systems</p>
+                                <p class="product-description">Fail-safe pressure relief devices for critical system protection.</p>
+                                <a href="#product-specifics" data-product-key="Rupture Disc / Extruder" class="product-link nav-page-link">Learn More &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="product-card" data-category="Specialty Valves" data-name="Regulator Valve">
+                            <img src="./images/regulator.png" alt="Regulator valve" class="product-image">
+                            <div class="product-info">
+                                <h3 class="product-title">Regulator valve</h3>
+                                <p class="product-category">Specialty Valves</p>
+                                <p class="product-description">A pressure regulator or pressure reducing valve, is a device that automatically controls the pressure of a fluid (liquid or gas) to a desired, lower, and constant value.</p>
+                                <a href="#product-specifics" data-product-key="Regulator Valve" class="product-link nav-page-link">Learn More &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="product-card is-placeholder-card" data-category="Custom Engineering" data-name="Custom Project Inquiry">
+                            <div class="product-info placeholder-info-content">
+                                <img src="solutions.png" alt="Custom Solutions" class="product-image"> <h3 class="product-title">Need a Custom Solution?</h3>
+                                <p class="product-category">Tailored Engineering Services</p>
+                                <p class="product-description">We excel at providing bespoke valve and safety solutions for unique industrial challenges. Contact our engineering team to discuss your specific project requirements.</p>
+                                <a href="#custom-solution" class="product-link nav-page-link">Discuss Your Project &rarr;</a> 
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div> 
+
+            <section id="market-section-products" class="sub-section section-padding bg-pattern"> 
+                <div class="container">
+                    <h2 class="subsection-title">Industry and Market</h2> <p class="section-intro">Serving diverse industries across the globe with reliable valve and safety solutions.</p>
+                    <div class="market-content market-grid">
+                        <div class="market-text">
+                            <h3>Global Reach, Local Expertise</h3>
+                            <p>We leverage our strategic position in Korea and strong international partnerships to distribute critical components worldwide</p>
+                            <ul><li>Extensive distribution network</li><li>Partnerships with leading manufacturers</li><li>Support for diverse industrial applications</li><li>Commitment to quality and reliability</li></ul>
+                        </div>
+                        <div class="market-image-container">
+                            <img src="market.png" alt="Market Distribution Map Placeholder" class="market-image"> </div>
+                    </div>
+                </div>
+            </section>
+        </section> <section id="custom-solution-page" class="page-section section-padding">
+            <div class="container">
+                <h1 class="section-title">Custom Solution Inquiry</h1>
+                <p class="section-intro">
+                    We specialize in tailoring valve and safety solutions to meet unique industrial challenges. 
+                    Please provide as much detail as possible about your requirements.
+                </p>
+                <div class="form-container custom-solution-form-container">
+                    <h2 class="form-title">Define Your Requirements</h2>
+                    <form id="custom-solution-form">
+                        <div class="form-group">
+                            <label for="cs-name">Your Name</label>
+                            <input type="text" id="cs-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cs-email">Your Email</label>
+                            <input type="email" id="cs-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cs-company">Company (Optional)</label>
+                            <input type="text" id="cs-company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="cs-project-title">Project Title / Application</label>
+                            <input type="text" id="cs-project-title" name="project_title" placeholder="e.g., High-pressure hydrogen relief system">
+                        </div>
+                        <h3 class="subsection-title-sm" style="margin-top: var(--space-8); margin-bottom: var(--space-4);">Operational Parameters</h3>
+                        <div class="form-grid">
+                            <div class="form-group"> <label for="cs-medium">Medium/Fluid</label> <input type="text" id="cs-medium" name="medium" placeholder="e.g., Natural Gas, Liquid Oxygen, Steam"> </div>
+                            <div class="form-group"> <label for="cs-pressure">Operating Pressure</label> <input type="text" id="cs-pressure" name="pressure" placeholder="e.g., 150 barg, 2000 psi"> </div>
+                            <div class="form-group"> <label for="cs-temperature">Operating Temperature</label> <input type="text" id="cs-temperature" name="temperature" placeholder="e.g., -196°C to +200°C"> </div>
+                            <div class="form-group"> <label for="cs-flow-rate">Required Flow Rate (Optional)</label> <input type="text" id="cs-flow-rate" name="flow_rate" placeholder="e.g., 1000 Nm³/h, 50 GPM"> </div>
+                        </div>
+                        <h3 class="subsection-title-sm" style="margin-top: var(--space-6); margin-bottom: var(--space-4);">Material &amp; Connection Requirements</h3>
+                        <div class="form-grid">
+                            <div class="form-group"> <label for="cs-body-material">Preferred Body Material (Optional)</label> <input type="text" id="cs-body-material" name="body_material" placeholder="e.g., Stainless Steel 316L, Monel"> </div>
+                            <div class="form-group"> <label for="cs-connection-type">Connection Type &amp; Size (Optional)</label> <input type="text" id="cs-connection-type" name="connection_type" placeholder="e.g., 2-inch RF Flange, 1/2-inch NPT"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cs-standards">Applicable Standards/Certifications (Optional)</label>
+                            <input type="text" id="cs-standards" name="standards" placeholder="e.g., ASME VIII, API 520, ATEX Zone 1">
+                        </div>
+                        <div class="form-group">
+                            <label for="cs-description">Detailed Description of Requirements</label>
+                            <textarea id="cs-description" name="description" rows="8" placeholder="Please describe your application, the problem you're trying to solve, specific functionalities needed, environmental conditions, and any other relevant details." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="cs-attachments">Attach Files (e.g., P&amp;ID, sketches) (Optional)</label>
+                            <input type="file" id="cs-attachments" name="attachments[]" multiple>
+                            <small>Max file size: 5MB per file. Allowed types: PDF, JPG, PNG, DWG.</small>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="button button-primary button-lg">Submit Custom Inquiry</button>
+                        </div>
+                    </form>
+                    <div id="custom-solution-confirmation" class="form-confirmation hidden">
+                        Thank you for your custom solution inquiry! Our engineering team will review your requirements and contact you shortly.
+                    </div>
+                </div>
+            </div>
+        </section> 
+
+        <section id="history-page" class="page-section">
+            <div class="container section-header-spacing">
+                <h1 class="section-title">Our Journey Through Time</h1>
+            </div>
+            <div id="history-section" class="sub-section section-padding"> <div class="container">
+                    <p class="section-intro">Explore the pivotal moments and innovations that have defined GST's legacy in safety and technology.</p>
+                    <div id="history-timeline-container">
+                        <div class="history-entry" data-year="1986">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-year"><span class="timeline-year-start">19</span><span class="timeline-year-end">86</span></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">The Genesis</h3>
+                                <p class="timeline-description">Geumgang Engineering Company is founded, laying the groundwork for future innovation.</p>
+                                <div class="timeline-image-placeholder"><img src="./images/gen.png" alt="Founding Era Concept" style="width:100%; height:100%; object-fit:cover;"></div>
+                            </div>
+                        </div>
+                        <div class="history-entry" data-year="1989">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-year"><span class="timeline-year-start">19</span><span class="timeline-year-end">89</span></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Formal Incorporation</h3>
+                                <p class="timeline-description">The company officially registers as a Corporate entity: Geumgang E&amp;I Co., Ltd.</p>
+                                <div class="timeline-image-placeholder"><img src="formal.jpeg" alt="Incorporation Document Concept" style="width:100%; height:100%; object-fit:cover;"></div>
+                            </div>
+                        </div>
+                        <div class="history-entry" data-year="1992">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-year"><span class="timeline-year-start">19</span><span class="timeline-year-end">92</span></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Forging Alliances: Keystone</h3>
+                                <p class="timeline-description">A significant Representation Agreement is signed with Keystone - Anderson Greenwood Corporations (AGCO).</p>
+                                <div class="timeline-image-placeholder"><img src="agc.png" alt="Keystone Partnership Concept" style="width:100%; height:100%; object-fit:cover;"></div>
+                            </div>
+                        </div>
+                        <div class="history-entry" data-year="1997">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-year"><span class="timeline-year-start">19</span><span class="timeline-year-end">97</span></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Strengthening Ties: Tyco</h3>
+                                <p class="timeline-description">The partnership evolves with a Representation Agreement involving Tyco - Anderson Greenwood Corporations (AGCO).</p>
+                                <p class="timeline-description sub-description">Context: Anderson Greenwood and Crosby merged operations in 1998.</p>
+                                <div class="timeline-image-placeholder"><img src="tyco.png" alt="Tyco Agreement Concept" style="width:100%; height:100%; object-fit:cover;"></div>
+                            </div>
+                        </div>
+                        <div class="history-entry" data-year="2000">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-year"><span class="timeline-year-start">20</span><span class="timeline-year-end">00</span></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Expanding Portfolio</h3>
+                                <p class="timeline-description">New representation agreements established with VAREC &amp; WHESSOE, broadening market reach.</p>
+                                <div class="timeline-image-placeholder"><img src="varec.png" alt="Portfolio Expansion Concept" style="width:100%; height:100%; object-fit:cover;"></div>
+                            </div>
+                        </div>
+                        <div class="history-entry" data-year="2002">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-year"><span class="timeline-year-start">20</span><span class="timeline-year-end">02</span></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Partnering with FIKE</h3>
+                                <p class="timeline-description">A strategic Representation Agreement is secured with FIKE Corporations, enhancing safety solutions.</p>
+                                <div class="timeline-image-placeholder"><img src="fike.jpeg" alt="FIKE Partnership Concept" style="width:100%; height:100%; object-fit:cover;"></div>
+                            </div>
+                        </div>
+                        <div class="history-entry" data-year="2010">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-year"><span class="timeline-year-start">20</span><span class="timeline-year-end">10</span></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">A New Identity: GST</h3>
+                                <p class="timeline-description">The company embraces its modern identity, renaming to "Geumgang S&amp;T Co., Ltd." (GST).</p>
+                                <div class="timeline-image-placeholder"><img src="gst logo2.png" alt="GST Rebranding Concept" style="width:100%; height:100%; object-fit:cover;"></div>
+                            </div>
+                        </div>
+                        <div class="history-entry" data-year="2012">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-year"><span class="timeline-year-start">20</span><span class="timeline-year-end">12</span></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Pentair Partnership</h3>
+                                <p class="timeline-description">Representation Agreement formed with Pentair - Anderson Greenwood Crosby (AGC).</p>
+                                <div class="timeline-image-placeholder"><img src="pentair.png" alt="Pentair Agreement Concept" style="width:100%; height:100%; object-fit:cover;"></div>
+                            </div>
+                        </div>
+                        <div class="history-entry" data-year="2018">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-year"><span class="timeline-year-start">20</span><span class="timeline-year-end">18</span></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Collaboration with EMERSON</h3>
+                                <p class="timeline-description">GST becomes a Local Business Partner through an agreement with EMERSON.</p>
+                                <div class="timeline-image-placeholder"><img src="emerson2.png" alt="Emerson Partnership Concept" style="width:100%; height:100%; object-fit:cover;"></div>
+                            </div>
+                        </div>
+                        <div class="history-entry" data-year="2022">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-year"><span class="timeline-year-start">20</span><span class="timeline-year-end">22</span></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Certified Service Excellence</h3>
+                                <p class="timeline-description">Achieved registration as an EMERSON SSP (Official Service Provider), validating service capabilities.</p>
+                                <div class="timeline-image-placeholder"><img src="emersonprovider.png" alt="SSP Certification Concept" style="width:100%; height:100%; object-fit:cover;"></div>
+                            </div>
+                        </div>
+                        <div class="history-entry" data-year="2023">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-year"><span class="timeline-year-start">20</span><span class="timeline-year-end">23</span></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Industry Recognition</h3>
+                                <p class="timeline-description">Honored with the Emerson Best LBP award for significant contributions to decarbonation efforts.</p>
+                                <div class="timeline-image-placeholder"><img src="" alt="LBP Award Concept" style="width:100%; height:100%; object-fit:cover;"></div>
+                            </div>
+                        </div>
+                    </div> </div> </div> </section> <section id="services-page" class="page-section">
+            <div class="container section-header-spacing">
+                <h1 class="section-title">Services &amp; Support</h1> 
+            </div>
+            <div id="repair" class="sub-section section-padding bg-light">
+                <div class="container">
+                    <h2 class="subsection-title">Valve Repair &amp; Maintenance Services</h2>
+                    <div class="repair-content-wrapper">
+                        <div class="repair-image-column">
+                            <img src="factory int.jpg" alt="GST Advanced Valve Repair Facility" class="repair-main-image"> 
+                            <div>
+                            <section>
+                                <img src="factory'.jpg" alt="GST Advanced Valve Repair Facility" class="factory-image-custom-size"> 
+                            </section>
+                            </div>
+                            
+                            </div>
+                        <div class="repair-text-column">
+                            <h3>Expert Solutions at Our Dangjin Service Center</h3>
+                            <p>
+                                Welcome to the GST Korea Service Center, where precision engineering meets unparalleled expertise. We understand that the integrity of your operations hinges on the reliability of your critical valve components. Our Dangjin facility is equipped with state-of-the-art technology and staffed by certified technicians dedicated to restoring your equipment to OEM specifications.
+                            </p>
+                            <p>
+                                We are committed to delivering dependable solutions through rigorous pre-delivery quality control, ensuring peace of mind and operational excellence for your most demanding industrial applications.
+                            </p>
+                            <h4>Our Comprehensive Repair Capabilities:</h4>
+                            <ul class="capabilities-list">
+                                <li><span class="capability-icon">&#128269;</span> Detailed Diagnostics &amp; Non-Destructive Testing (NDT)</li>
+                                <li><span class="capability-icon">&#128295;</span> Precision Machining, Grinding, &amp; Lapping</li>
+                                <li><span class="capability-icon">&#128736;</span> Component Repair &amp; Genuine OEM Part Replacement</li>
+                                <li><span class="capability-icon">&#128279;</span> Expert Welding &amp; Cladding (Stellite, Monel, etc.)</li>
+                                <li><span class="capability-icon">&#128200;</span> Hydrostatic &amp; Pneumatic Pressure Testing to International Standards</li>
+                                <li><span class="capability-icon">&#127941;</span> Valve Re-certification &amp; Performance Documentation</li>
+                                <li><span class="capability-icon">&#128230;</span> Asset Management &amp; Preventative Maintenance Programs</li>
+                            </ul>
+                            <div class="repair-cta-container">
+                                <p class="repair-cta-text">Ensure the longevity and reliability of your critical assets. Contact us for expert repair services.</p>
+                                <a href="#services" data-scroll-target="live-support" class="button button-primary button-lg nav-page-link">Request Repair Support</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="training-request" class="sub-section section-padding">
+                <div class="container">
+                    <h2 class="subsection-title">Training Request</h2>
+                    <p class="section-intro text-center">Enhance your team's expertise with our specialized training modules. Click a module below for details or to request training.</p>
+            
+                    <div class="training-modules-grid">
+                        <a href="#" class="training-module"
+                           data-module-id="basics"
+                           data-module-title="Valve Maintenance Basics"
+                           data-large-image-src="./images/learning.jpg" data-full-description="<h4>Module Overview:</h4><p>This foundational course provides a comprehensive overview of essential valve maintenance practices. Participants will learn about various valve types (gate, globe, ball, check, plug), their components, and principles of operation.</p><h4>Key Learning Objectives:</h4><ul><li>Identify common industrial valve types and their primary applications.</li><li>Understand the function of key valve components (body, bonnet, trim, actuator).</li><li>Perform safe isolation, depressurization, and lockout/tagout procedures.</li><li>Master techniques for valve disassembly, inspection of critical parts (seats, discs, stems), and correct reassembly.</li><li>Learn about different sealant and lubricant types and their proper application.</li><li>Practice gland packing maintenance and replacement.</li><li>Diagnose common valve failures and implement basic corrective actions.</li></ul><p><strong>Target Audience:</strong> Maintenance technicians, new engineers, plant operators, and anyone involved in the day-to-day operation and upkeep of process valves.</p><p><strong>Duration:</strong> 2 days (includes theoretical sessions and practical workshop).</p>">
+                            <div class="training-module-image-wrapper">
+                                <img src="learning.jpg" alt="Valve Maintenance Basics Training" class="training-module-image">
+                            </div>
+                            <div class="training-module-text">
+                                <h3>Valve Maintenance Basics</h3>
+                                <p>Fundamental principles &amp; hands-on practice.</p>
+                            </div>
+                        </a>
+            
+                        <a href="#" class="training-module"
+                           data-module-id="testing"
+                           data-module-title="Safety Valve Testing & Calibration"
+                           data-large-image-src="./images/teachings.jpg" data-full-description="<h4>Module Overview:</h4><p>Critical for plant safety and regulatory compliance, this module focuses on the principles, procedures, and standards for testing and calibrating pressure relief valves (PRVs) and safety valves. Attendees will gain in-depth knowledge of ASME Section VIII, API RP 520, 521, 527, 576, and local regulatory requirements (e.g., KOSHA). The course details various testing methods, including bench testing (using air, nitrogen, or liquid test media) and in-situ online testing with assist devices. </p><p>Key topics include pre-test inspection, visual examination, accurate set pressure (pop pressure) verification, seat tightness testing (leakage testing to API 527 standards), and blowdown adjustment. Proper documentation, tagging, and record-keeping for traceability and compliance are also emphasized. Practical sessions will involve hands-on use of test benches and safety valves, simulating real-world testing scenarios to ensure technicians can accurately maintain and certify these vital safety devices according to industry best practices and regulatory requirements.</p><h4>Key Learning Objectives:</h4><ul><li>Understand the critical role of safety valves in overpressure protection.</li><li>Interpret relevant codes, standards, and regulations (ASME, API, KOSHA).</li><li>Safely prepare and execute bench testing and in-situ testing procedures.</li><li>Accurately determine and adjust set pressure and blowdown.</li><li>Perform seat leakage tests and evaluate results against acceptance criteria.</li><li>Understand the function and calibration of pilot-operated safety relief valves.</li><li>Complete all necessary documentation and certification records.</li></ul><p><strong>Target Audience:</strong> Instrument technicians, valve repair specialists, safety engineers, and personnel responsible for PSV/PRV integrity programs.</p><p><strong>Duration:</strong> 3 days (includes theoretical sessions, practical workshop, and assessment).</p>">
+                            <div class="training-module-image-wrapper">
+                                <img src="teachings.jpg" alt="Safety Valve Testing & Calibration Training" class="training-module-image">
+                            </div>
+                            <div class="training-module-text">
+                                <h3>Safety Valve Testing &amp; Calibration</h3>
+                                <p>Procedures, best practices, and certification.</p>
+                            </div>
+                        </a>
+            
+                        <a href="#" class="training-module"
+                           data-module-id="advanced"
+                           data-module-title="Advanced Flow Control Techniques"
+                           data-large-image-src="./images/factory2.jpg" data-full-description="<h4>Module Overview:</h4><p>Designed for experienced engineers, senior technicians, and process control specialists, this advanced course delves into complex flow dynamics, sophisticated control valve sizing and selection for severe service applications, and cutting-edge performance optimization strategies. Topics include understanding cavitation, flashing, and noise generation in control valves, advanced diagnostic techniques, digital positioners and smart valve technology, and the integration of control valves within process control loops (e.g., PID tuning impact). Case studies and simulation exercises will be used to explore solutions for challenging flow control problems and improve overall process efficiency and stability.</p><h4>Key Learning Objectives:</h4><ul><li>Analyze and mitigate issues like cavitation, flashing, and aerodynamic/hydrodynamic noise in control valves.</li><li>Apply advanced sizing and selection methodologies (e.g., IEC 60534 standards) for severe service applications.</li><li>Utilize digital valve controllers (DVCs), HART protocol, and Fieldbus data for diagnostics and predictive maintenance.</li><li>Understand the impact of valve dynamics (hysteresis, deadband, response time) on process control loop performance and stability.</li><li>Develop strategies for optimizing control valve performance, reducing fugitive emissions, and enhancing overall system reliability.</li></ul><p><strong>Target Audience:</strong> Process control engineers, senior instrumentation technicians, application engineers, and system integrators looking to deepen their expertise in flow control solutions.</p><p><strong>Duration:</strong> 3 days.</p>">
+                            <div class="training-module-image-wrapper">
+                                <img src="factory2.jpg" alt="Advanced Flow Control Techniques Training" class="training-module-image">
+                            </div>
+                            <div class="training-module-text">
+                                <h3>Advanced Flow Control Techniques</h3>
+                                <p>Understanding complex flow dynamics &amp; optimization.</p>
+                            </div>
+                        </a>
+                    </div>
+            
+                    <div id="training-detail-modal-overlay" style="display: none;">
+                        <div class="training-detail-modal-content">
+                            <button type="button" id="modal-close-button" class="button button-sm">&times;</button>
+                            <h3 id="modal-training-title">
+                                </h3>
+                            <div id="modal-training-image-container">
+                          
+                                        </a>
+                                    
+
+                            </div>
+                            <div id="modal-training-description" class="training-module-detail-text-container">
+                                </div>
+                            <div class="modal-training-actions">
+                                <button type="button" id="modal-show-training-request-form-button" class="button button-primary button-lg">Request This Training</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div id="training-request-form-container" class="form-container" style="display: none;">
+                        <h2 class="form-title">Submit Training Request</h2>
+                        <form id="training-request-form">
+                            <div class="form-grid">
+                                <div><label for="training-name">Your Name</label><input type="text" id="training-name" name="name" required></div>
+                                <div><label for="training-email">Your Email</label><input type="email" id="training-email" name="email" required></div>
+                            </div>
+                            <div><label for="training-company">Company (Optional)</label><input type="text" id="training-company" name="company"></div>
+                            <div><label for="training-topic">Requested Training Module</label><input type="text" id="training-topic" name="topic" readonly required></div>
+                            <div><label for="training-participants">Number of Participants (Approx.)</label><input type="number" id="training-participants" name="participants" min="1" placeholder="e.g., 5"></div>
+                            <div>
+                                <label for="training-location">Preferred Location</label>
+                                <select id="training-location" name="location">
+                                    <option value="customer-site">Customer Site</option>
+                                    <option value="gst-facility">GST Facility (Dangjin)</option>
+                                    <option value="online">Online (if applicable)</option>
+                                </select>
+                            </div>
+                            <div><label for="training-message">Additional Details / Specific Needs</label><textarea id="training-message" name="message" rows="4" placeholder="Please mention any specific areas of focus, equipment types, or preferred dates."></textarea></div>
+                            <div class="form-actions">
+                                <button type="submit" class="button button-primary">Submit Training Request</button>
+                                <button type="button" id="cancel-training-request-button" class="button button-secondary" style="margin-left: var(--space-3);">Cancel</button>
+                            </div>
+                        </form>
+                        <div id="training-confirmation" class="form-confirmation hidden">Thank you for your training request! We will contact you shortly to discuss the details.</div>
+                    </div>
+                </div>
+            </div>
+            
+                    <div id="training-detail-modal-overlay" style="display: none;"> <div class="training-detail-modal-content">
+                            <button type="button" id="modal-close-button" class="button button-sm">&times;</button>
+                            <h3 id="modal-training-title">
+                                </h3>
+                            <div id="modal-training-image-container">
+                                <img id="modal-training-image" src="https://placehold.co/800x500/777/eee?text=Large+Training+Image" alt="">
+                            </div>
+                            <div id="modal-training-description" class="training-module-detail-text-container">
+                                </div>
+                            <div class="modal-training-actions">
+                                <button type="button" id="modal-show-training-request-form-button" class="button button-primary button-lg">Request This Training</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div id="training-request-form-container" class="form-container" style="display: none;">
+                        <h2 class="form-title">Submit Training Request</h2>
+                        <form id="training-request-form">
+                            <div class="form-grid">
+                                <div><label for="training-name">Your Name</label><input type="text" id="training-name" name="name" required></div>
+                                <div><label for="training-email">Your Email</label><input type="email" id="training-email" name="email" required></div>
+                            </div>
+                            <div><label for="training-company">Company (Optional)</label><input type="text" id="training-company" name="company"></div>
+                            <div><label for="training-topic">Requested Training Module</label><input type="text" id="training-topic" name="topic" readonly required></div>
+                            <div><label for="training-participants">Number of Participants (Approx.)</label><input type="number" id="training-participants" name="participants" min="1" placeholder="e.g., 5"></div>
+                            <div>
+                                <label for="training-location">Preferred Location</label>
+                                <select id="training-location" name="location">
+                                    <option value="customer-site">Customer Site</option>
+                                    <option value="gst-facility">GST Facility (Dangjin)</option>
+                                    <option value="online">Online (if applicable)</option>
+                                </select>
+                            </div>
+                            <div><label for="training-message">Additional Details / Specific Needs</label><textarea id="training-message" name="message" rows="4" placeholder="Please mention any specific areas of focus, equipment types, or preferred dates."></textarea></div>
+                            <div class="form-actions">
+                                <button type="submit" class="button button-primary">Submit Training Request</button>
+                                <button type="button" id="cancel-training-request-button" class="button button-secondary" style="margin-left: var(--space-3);">Cancel</button>
+                            </div>
+                        </form>
+                        <div id="training-confirmation" class="form-confirmation hidden">Thank you for your training request! We will contact you shortly to discuss the details.</div>
+                    </div>
+                </div>
+            </div>
+            <div id="training-survey-results" class="sub-section section-padding">
+                <div class="container">
+                    <h2 class="subsection-title">Training Program Feedback</h2>
+                    <p class="section-intro text-center">
+                        Insights from participants of our recent training programs.
+                    </p>
+                    <div class="survey-graphs-grid">
+                        <div class="survey-graph-item">
+                            <h3 class="graph-title">참가자 현재 직책/역할<br>(Participant's Current Position/Role)</h3>
+                            <img src="graph 1.png" alt="Pie chart displaying the current positions/roles of training participants. Key segments include Engineer (50%), Maintenance Supervisor/Manager (33.3%), and Maintenance Technician (11.1%).">
+                            <p class="graph-caption">A diverse group of professionals participated in our training, with a significant representation from engineering and maintenance supervision roles.</p>
+                        </div>
+                        <div class="survey-graph-item">
+                            <h3 class="graph-title">PSV 교육 주제 이해도 향상 도움 수준<br>(Helpfulness of PSV Training in Improving Understanding)</h3>
+                            <img src="graph 2.png" alt="Bar chart showing participant ratings on how helpful PSV training topics were for improving understanding. Ratings: 5 (Very Helpful) - 44.4%, 4 (Helpful) - 50%, 3 (Moderately Helpful) - 5.6%.">
+                            <p class="graph-caption">The vast majority of participants found the PSV training topics highly effective in enhancing their understanding.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="live-support" class="sub-section section-padding bg-light"> <div class="container chat-container">
+                    <h2 class="subsection-title">Live Support</h2>
+                    <div class="chat-grid">
+                        <div class="support-guidance">
+                            <h4>How to write a good support ticket</h4>
+                            <p>Help us help you by providing clear details</p>
+                            <ul><li>Summarize the issue in the title.</li><li>List steps taken to troubleshoot.</li></ul>
+                            <h4>Key Details Needed:</h4>
+                            <ul><li>Where did the error occur?</li><li>Who experienced the problem?</li><li>Error messages? (Screenshots help!)</li></ul>
+                        </div>
+                        <div class="chat-area">
+                            <div class="quick-inquiry">
+                                <h4>Common Inquiries:</h4>
+                                <button class="quick-inquiry-btn" data-message="Return Processing Times?">Return Times</button>
+                                <button class="quick-inquiry-btn" data-message="Help selecting a valve?">Valve Selection</button>
+                                <button class="quick-inquiry-btn" data-message="Request a quote for [Product Name]?">Request Quote</button>
+                                <button class="quick-inquiry-btn" data-message="Datasheet for [Product Name]?">Datasheet</button>
+                                <hr style="border-color: var(--border-color-light); margin: var(--space-4) 0;">
+                                <h4>Or, navigate to:</h4>
+                                <a href="#products-page" class="quick-inquiry-btn nav-page-link">View Our Products</a>
+                                <a href="#services-page" class="quick-inquiry-btn nav-page-link">Explore Services</a>
+                                <a href="#repair" data-scroll-target="repair" class="quick-inquiry-btn nav-page-link">Repair Services Info</a>
+                                <a href="#training-request" data-scroll-target="training-request" class="quick-inquiry-btn nav-page-link">Training Requests</a>
+                                <a href="#company-page" class="quick-inquiry-btn nav-page-link">About Our Company</a>
+                                <a href="#certification" data-scroll-target="certification" class="quick-inquiry-btn nav-page-link">View Certifications</a>
+                                <a href="#history-page" class="quick-inquiry-btn nav-page-link">Company History</a>
+                                <a href="#contact" data-scroll-target="contact" class="quick-inquiry-btn nav-page-link">Full Contact Details</a>
+                            </div>
+                            <div class="chat-window">
+                                <div class="chat-header">GST AI Assistant</div>
+                                <div class="chat-messages" id="chat-messages"> <div class="chat-message ai">Hello! How can I assist you today?</div></div>
+                                <div class="chat-input-area">
+                                    <input type="text" id="chat-input" placeholder="Ask your question...">
+                                    <button id="chat-send-button" class="button button-primary">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> <section id="brands-page" class="page-section section-padding">
+            <div class="container">
+                <h1 class="section-title">Our Brands</h1>
+                <p class="section-intro">We partner with industry leaders to bring you the best in safety and flow control technology.</p>
+                <div class="brands-grid">
+                    <div class="brand-card"><a href="https://www.emerson.com/en-us" target="_blank" rel="noopener noreferrer"><img src="./images/emerson_logo_placeholder.png" alt="Emerson Logo"><h3>Emerson</h3></a><p>Global technology and software leader providing innovative solutions for customers in industrial, commercial, and residential markets.</p></div> <div class="brand-card"><a href="https://fike.com/" target="_blank" rel="noopener noreferrer"><img src="./images/fike_logo_placeholder.png" alt="Fike Logo"><h3>Fike</h3></a><p>A globally recognized supplier of precision-engineered solutions for pressure relief, explosion protection, and fire protection.</p></div> </div>
+            </div>
+        </section> 
+
+        <section id="product-specifics-page" class="page-section section-padding">
+            <div class="container">
+                <button id="back-to-products-list-button" class="button button-secondary button-sm" style="margin-bottom: 20px;">&larr; Back to All Products</button>
+                <div class="product-specifics-content-wrapper"> 
+                    <div class="product-specifics-gallery">
+                        <img id="specifics-main-image" src="https://placehold.co/600x400/eee/ccc?text=Product+Image" alt="Main Product Image" class="product-main-image">
+                        <div id="specifics-thumbnail-gallery" class="thumbnail-gallery">
+                            </div>
+                    </div>
+                    <div class="product-specifics-details-column"> 
+                        <div class="product-specifics-text">
+                            <h1 id="specifics-product-title" class="section-title" style="text-align: left; margin-top: 0;">Cryogenic Regulator</h1> 
+                            <p id="specifics-product-category" class="product-category-style">Flow Control</p>
+                            <div id="specifics-product-short-description">
+                                Precision control for low-temperature fluid applications, vital for LNG and industrial gases.
+                            </div>
+                        </div>
+                        <div class="tabs-container" style="margin-top: var(--s-3);"> 
+                            <div class="tabs-nav">
+                                <button class="tab-link active-tab" data-tab="tab-description">Description</button>
+                                <button class="tab-link" data-tab="tab-specifications">Specifications</button>
+                                <button class="tab-link" data-tab="tab-features">Key Features</button>
+                                <button class="tab-link" data-tab="tab-downloads">Downloads</button>
+                            </div>
+                            <div id="tab-description" class="tab-content active-tab-content">
+                                <h2>Full Description</h2>
+                                <p id="specifics-full-description">Detailed product description will load here...</p>
+                            </div>
+                            <div id="tab-specifications" class="tab-content">
+                                <h2>Specifications</h2>
+                                <table id="specifics-specs-table" class="styled-table">
+                                    <thead><tr><th>Feature</th><th>Detail</th></tr></thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div id="tab-features" class="tab-content">
+                                <h2>Key Features</h2>
+                                <ul id="specifics-features-list" class="styled-list"></ul>
+                            </div>
+                            <div id="tab-downloads" class="tab-content">
+                                <h2>Downloads</h2>
+                                <ul id="specifics-downloads-list" class="styled-list"></ul>
+                            </div>
+                        </div>
+                        <div class="product-specifics-cta" style="margin-top: var(--space-8);">
+                            <a href="#company" data-scroll-target="contact" id="specifics-inquiry-button" class="button button-primary button-lg nav-page-link">Inquire About This Product</a>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        </section>
+    </main> <footer class="main-footer section-padding">
+        <div class="container">
+            <p class="footer-copy">&copy; <span id="current-year"></span> GST (Geumgang S&T Co., Ltd.). All rights reserved.</p>
+            <div class="footer-social-icons">
+                <a href="#" aria-label="Facebook"><span class="sr-only">Facebook</span></a>
+                <a href="#" aria-label="LinkedIn"><span class="sr-only">LinkedIn</span></a>
+            </div>
+            <p class="footer-credits">Designed &amp; Developed by GST</p>
+        </div>
+    </footer>
+
+    <script src="./script.js" defer></script>
+</body>
+</html>
